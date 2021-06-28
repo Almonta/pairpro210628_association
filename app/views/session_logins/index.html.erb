@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Session Logins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @session_logins.each do |session_login| %>
+      <tr>
+        <td><%= session_login.title %></td>
+        <td><%= session_login.content %></td>
+        <td><%= link_to 'Show', session_login %></td>
+        <td><%= link_to 'Edit', edit_session_login_path(session_login) %></td>
+        <td><%= link_to 'Destroy', session_login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session Login', new_session_login_path %>

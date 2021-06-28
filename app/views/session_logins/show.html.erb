@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<% unless @session_login.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @session_login.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @session_login.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @session_login.content %>
+</p>
+
+<%= link_to 'Edit', edit_session_login_path(@session_login) %> |
+<%= link_to 'Back', session_logins_path %>
